@@ -1,0 +1,45 @@
+.navigation{
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+
+.barNav .navigation {   
+    display: flex;
+    justify-content: space-between;
+}
+
+@media (max-width: 675px) {
+    .barNav{
+        display: none;
+    }
+}
+
+.sideDrawerNav li{
+    margin-bottom: 2rem;
+}
+
+.navigation li{
+    margin-right: 2rem;
+}
+
+.navigation li:last-of-type{
+    margin-right: 0;
+}
+
+.navigation a{
+    text-decoration: none;
+    color: #2B475C;
+    font-size: 2.4rem;
+    word-spacing: -.4rem;
+
+}
+
+.navigation a.active{
+    color: #5E8A75;
+}
+
+.navigation li a:hover{
+    color: #5E8A75;
+    transition: color .3s ease;
+}

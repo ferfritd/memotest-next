@@ -1,0 +1,94 @@
+.modal{
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 4rem;
+    background-color: #e9e6e1;
+    max-width: 80%;
+    border-radius: 1rem;
+    z-index: 1000;
+    box-shadow:
+    0 1.6px 3.1px rgba(0, 0, 0, 0.031),
+    0 4.1px 7.4px rgba(0, 0, 0, 0.044),
+    0 8.3px 14.6px rgba(0, 0, 0, 0.056),
+    0 17.2px 31.1px rgba(0, 0, 0, 0.069),
+    0 47px 100px rgba(0, 0, 0, 0.1)
+    ;
+}
+
+.modal p, .modalHeader{
+    font-size: 3rem;
+    font-weight: bold;
+    color: #5E8A75;
+}
+
+.modalHeader{
+    text-align: center;
+}
+
+p.formInstructions{
+    color: black;
+    font-weight: normal;
+    font-size: 1.6rem;
+    margin: 1rem 0 0 0;
+}
+
+.slowTransition{
+    transition: all 2s ease-out;
+}
+
+.fasterTransition{
+    transition:  all .4s ease;
+}
+
+.modalButtons{
+    display: flex;
+    justify-content: center;
+}
+
+.fadeIn{
+    opacity: 1;
+}
+
+.fadeOut{
+    opacity: 0;
+    z-index: -1;
+}
+
+#newGameDontShow{
+    margin-right: 1rem;
+}
+
+@media (max-width: 1054px) {
+
+    .instructionsModal{
+        width: 70%;
+    }   
+}
+
+@media (max-width: 737px) {
+
+    .instructionsModal{
+        width: 80%;
+        padding: 2rem;
+    }
+    
+    .instructionsModal h2{
+        font-size: 2rem;
+    }
+    .instructionsModal button{
+        font-size: 1.5rem;
+        margin: 2rem auto;
+    }
+}
+
+
+@media (max-width: 751px) {
+    .modal button{
+        font-size: 1.5rem;
+    }
+}

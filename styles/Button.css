@@ -1,0 +1,43 @@
+.button,
+.buttonLink{
+    display: inline-block;
+    text-decoration: none;
+    padding: 1rem 3rem;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    border-radius: 1rem;
+    font-size: 2rem;
+    font-weight: bold;
+    margin: 2rem .5rem;
+    transition: all .3s ease-in-out;
+    text-transform: uppercase;
+}
+
+.buttonSmall{
+    padding: 1rem 3rem;
+    font-size: 1.8rem;
+}
+
+
+.buttonCircle{
+    border-radius: 50%;
+    padding: 2rem;
+}
+
+.buttonMain{
+    background-color: #2B475C;
+    color: #e9e6e1;
+    border: 2px solid transparent;
+}
+
+.buttonInverted{
+    color: #2B475C;
+    background-color: #e9e6e1;
+    border: 2px solid #2B475C;
+}
+
+/* button:hover,
+.buttonLink:hover{
+    transform: scale(1.05);
+} */
