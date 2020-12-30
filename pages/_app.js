@@ -1,7 +1,5 @@
 // import '../styles/globals.css'
 
-import DeckContextProvider from 'shared/Context/DeckContextProvider'
-
 import Header from 'shared/Navigation/Header'
 
 import 'styles/normalize.css'
