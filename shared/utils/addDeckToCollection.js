@@ -1,4 +1,4 @@
-import { v4 as uuidV4 } from "uuid";
+// import { v4 as uuidV4 } from "uuid";
 
 
 const addDeckToCollection = (deckObject) => {
@@ -6,7 +6,7 @@ const addDeckToCollection = (deckObject) => {
     const date = new Date().toLocaleDateString()
                 const time = new Date().toLocaleTimeString()
                 
-                const deck = {id:uuidV4(), title:deckObject.title, deck:deckObject.deck, timeStamp:`Created on ${date} at ${time}`}
+                const deck = {id:deckObject.id, title:deckObject.title, deck:deckObject.deck, timeStamp:`Created on ${date} at ${time}`}
                 let deckCollection = JSON.parse(localStorage.getItem
                 ('deckCollection'))
 

@@ -1,8 +1,6 @@
 import { useEffect, useContext, useState, Fragment } from 'react'
 import addDeckToCollection from 'shared/utils/addDeckToCollection'
 
-// import { DeckContext } from '../../shared/Context/DeckContextProvider'
-
 import { useRouter } from 'next/router'
 
 import useForm from 'shared/hooks/useForm'
@@ -18,8 +16,6 @@ import styles from "game/views/GameForm.module.css";
 const NewGame = () => {
 
     const router = useRouter()
-
-    console.log(router.pathname)
 
     const [state,{inputChangeHandler, addInputHandler, removeInputHandler, changeTitleHandler, submitFormHandler}] = useForm('', [])
 
@@ -42,10 +38,36 @@ const NewGame = () => {
     useEffect(() => {
 
         if(state.deck.length > 0){
-            const deckObject = {title:state.title, deck: state.deck}
 
-            addDeckToCollection(deckObject)
-            router.push('/')
+            fetch('http://localhost:8080/create-deck',
+            {   method:'POST',  
+                
+                body:JSON.stringify({
+                    title:state.title,
+                    cards:state.deck,
+                    primaryLanguage:'Spanish',
+                    goalLanguage: 'English',
+                    isPublic: true
+                }),
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+            })
+                .then(response => {
+                    return response.json()
+                })
+                .then(data => {
+                    const deckObject = {title:state.title, deck: state.deck}
+
+                addDeckToCollection(deckObject)
+                router.push('/')        
+                
+                })
+                .catch(error => {
+                    console.log(error)
+                })
+
+            
         }
     }, [state.deck])
 
