@@ -1,15 +1,13 @@
-import { useEffect, useContext, useState, Fragment } from 'react'
+import { useEffect } from 'react'
 import addDeckToCollection from 'shared/utils/addDeckToCollection'
 
 import { useRouter } from 'next/router'
 
 import useForm from 'shared/hooks/useForm'
-// import useScroll from '../../shared/hooks/useScroll'
 
 import Input from 'game/components/input'
 import Button from "shared/UI/Button"
 import Box from "shared/UI/Box"
-// import Modal from 'shared/UI/Modal'
 
 import styles from "game/views/GameForm.module.css";
 
@@ -57,7 +55,7 @@ const NewGame = () => {
                     return response.json()
                 })
                 .then(data => {
-                    const deckObject = {title:state.title, deck: state.deck}
+                    const deckObject = {title:state.title, deck: state.deck, id:data.deck._id}
 
                 addDeckToCollection(deckObject)
                 router.push('/')        

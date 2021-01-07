@@ -1,10 +1,8 @@
-import {useEffect, useReducer} from 'react'
+import {useReducer, useLayoutEffect} from 'react'
 
 import Box from 'shared/UI/Box'
 import Button from "shared/UI/Button";
 import Card from 'shared/UI/Card'
-import GameModal from 'game/components/GameModal'
-
 
 import styles from "game/views/Game.module.css";
 
@@ -151,7 +149,7 @@ const [state, dispatch] = useReducer(reducer,
     }
 
 
-    useEffect(() => {
+    useLayoutEffect(() => {
         let currentDeck = JSON.parse(localStorage.getItem('currentDeck'))
         
         if(!currentDeck){

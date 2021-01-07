@@ -1,6 +1,8 @@
-import {useEffect, useState} from 'react'
+import {useEffect, useState , useLayoutEffect} from 'react'
 import { useRouter } from 'next/router'
 // import { DeckContext } from '../../shared/Context/DeckContextProvider' 
+import Link from 'next/link'
+
 
 import useDidMountEffect from 'shared/hooks/useDidMountEffect'
 // import useScroll from '../../shared/hooks/useScroll'
@@ -55,7 +57,7 @@ const MyGames = () => {
                     </div>
                     <div className={styles.buttons}>
                         <Button classes="button buttonSmall buttonMain" type="button" click={() => playGameHandler(deck.id)}>Play</Button>
-                        <Button to={`/my-games/${deck.id}`} exact={"true"} classes="button buttonSmall buttonInverted buttonLink">
+                        <Button href={{pathname:'edit/[deckId]', query:{deckId:deck.id}}} classes="button buttonSmall buttonInverted buttonLink">
                             Edit
                         </Button>
                         <Button classes="button buttonSmall buttonMain" click={() => openCloseModalHandler(deck.id)}>Delete</Button>
@@ -75,7 +77,7 @@ const MyGames = () => {
 
         </div>
 
-    useEffect(() => {
+    useLayoutEffect(() => {
         setCollectionState(JSON.parse(localStorage.getItem('deckCollection')))
     }, [])
 

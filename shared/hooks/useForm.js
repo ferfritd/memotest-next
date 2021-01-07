@@ -6,6 +6,14 @@ const formReducer = (state, action) => {
     
     let newState = {...state}
     switch(action.type){
+        case 'FILLINPUTS':
+            
+            newState.inputs = action.deck.deck.map(pair => {
+                return {id:uuidV4(),pairs:[pair[0], pair[1]], showError: false}
+            })
+            newState.title = action.deck.title
+            
+            return newState
         case 'CHANGETITLE':
             newState.title = action.value
             return newState
@@ -66,20 +74,12 @@ const formReducer = (state, action) => {
 
 export default function useForm(title, deck) {
 
-    let myInputs;
-
-    if(deck.length > 0){
-        myInputs = deck.map(pair => {
-            return {id:uuidV4(),pairs:[pair[0], pair[1]], showError: false}
-        })
-    } else {
-        myInputs = [
+    let myInputs = [
             {id:uuidV4(),pairs:['', ''], showError: false},
             {id:uuidV4(),pairs:['', ''], showError: false},
             {id:uuidV4(),pairs:['', ''], showError: false},
             {id:uuidV4(),pairs:['', ''], showError: false},
         ]    
-    }
      
     const [state, dispatch] = useReducer(formReducer, 
         {
@@ -88,6 +88,10 @@ export default function useForm(title, deck) {
             deck: deck
             
         })
+
+        const fillInputsHandler = deck => {
+            dispatch({type:'FILLINPUTS', deck: deck})
+        }
 
         const inputChangeHandler = (id, value) => {
             dispatch({type:'INPUTCHANGE', id:id, value:value})
@@ -110,5 +114,5 @@ export default function useForm(title, deck) {
             dispatch({type:'SUBMITFORM'}) 
         }
      
-    return [state, {inputChangeHandler, changeTitleHandler, addInputHandler, removeInputHandler, submitFormHandler}]
+    return [state, {inputChangeHandler, changeTitleHandler, addInputHandler, removeInputHandler, submitFormHandler, fillInputsHandler}]
 }

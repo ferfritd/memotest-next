@@ -5,10 +5,10 @@ export default function Button(props) {
     if (props.href) {
         return (
           <Link
-            href={props.href}
-            className={props.classes}
-          >
-            {props.children}
+            href={props.href}>
+          <a  className={props.classes}>
+              {props.children}
+          </a>
           </Link>
         );
     }
